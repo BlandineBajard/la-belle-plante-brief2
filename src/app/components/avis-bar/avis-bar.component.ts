@@ -56,7 +56,7 @@ export class AvisBarComponent implements OnInit {
       } else {
         this.starStates[i].stateSelectedUser = false;
       }
-    }
+    } // commentaire quelque part
   }
 
 }
