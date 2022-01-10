@@ -1,13 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import * as _ from 'underscore';
 
 @Component({
   selector: 'app-avis-bar',
   templateUrl: './avis-bar.component.html',
   styleUrls: ['./avis-bar.component.scss']
 })
-export class AvisBarComponent implements OnInit {
-  starStates: {stateSelectedUser : boolean, stateHoverUser : boolean}[];
 
+export class AvisBarComponent implements OnInit {
+  @Output() filterByAvis = new EventEmitter();
+
+  starStates: {stateSelectedUser : boolean, stateHoverUser : boolean}[];
+  rate = 0;
   constructor() {
     this.starStates = [];
 
@@ -56,7 +60,8 @@ export class AvisBarComponent implements OnInit {
       } else {
         this.starStates[i].stateSelectedUser = false;
       }
-    } // commentaire quelque part
+    }
+    this.filterByAvis.emit(starIndex+1);
   }
 
 }

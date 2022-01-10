@@ -9,10 +9,12 @@ import * as _ from 'underscore';
 })
 export class PageAccueilComponent implements OnInit {
   public listData: any[];
+  public listFull: any[];
   public listCategoriesFilter: string[];
 
   constructor(private plantouneService: PlantouneService) {
     this.listData = [];
+    this.listFull = [];
     this.listCategoriesFilter = [];
    }
 
@@ -53,6 +55,7 @@ export class PageAccueilComponent implements OnInit {
 
         this.listCategoriesFilter = listUniqJsCategories;
         this.listData = listPlant;
+        this.listFull = listPlant;
         this.listData.length = 9;
       }
     )
@@ -60,6 +63,16 @@ export class PageAccueilComponent implements OnInit {
 
   onEventLike() {
     this.plantouneService.plantLiked$.next('')
+  }
+  
+  recupRateAvis(rateAvis:any){
+    //console.log('from accueil: '+rateAvis);
+    let product = this.listFull.filter(function (currentElement) {
+      // the current value is an object, so you can check on its properties
+      return currentElement.product_rating >= rateAvis;
+    });
+    this.listData = product;
+    //console.log(product);
   }
 
 }
