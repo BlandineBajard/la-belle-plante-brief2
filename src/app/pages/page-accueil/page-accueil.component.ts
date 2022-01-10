@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { PlantouneService } from 'src/app/services/plantoune.service';
 import * as _ from 'underscore';
+
 
 @Component({
   selector: 'app-page-accueil',
@@ -9,12 +10,14 @@ import * as _ from 'underscore';
 })
 export class PageAccueilComponent implements OnInit {
   public listData: any[];
+  public listFull: any[];
   public listCategoriesFilter: string[];
 
   constructor(private plantouneService: PlantouneService) {
     this.listData = [];
     this.listCategoriesFilter = [];
-   }
+    this.listFull =[];
+  }
 
    /**
     * equivalent de la ligne du dessus 
@@ -53,6 +56,7 @@ export class PageAccueilComponent implements OnInit {
 
         this.listCategoriesFilter = listUniqJsCategories;
         this.listData = listPlant;
+        this.listFull = listPlant;
         this.listData.length = 9;
       }
     )
@@ -62,4 +66,19 @@ export class PageAccueilComponent implements OnInit {
     this.plantouneService.plantLiked$.next('')
   }
 
+  onSearchChange(product_name: any): void {
+    if(product_name == '' ){
+      this.listData = this.listFull;
+    }
+    else{
+      this.applyFilter(product_name);
+    }
+  }
+
+  applyFilter(filter :any ) {
+    let product = this.listFull.filter((plants) =>
+    plants.product_name.toLowerCase().includes(filter.toLowerCase())
+    );
+    this.listData = product;
+  }
 }
