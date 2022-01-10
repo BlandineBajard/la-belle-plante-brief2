@@ -1,6 +1,19 @@
 .img-plant {
-  height: 500px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  height: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.price {
+  text-align: center;
+}
+
+.quy {
+  text-align: center;
+}
+.bouton {
+  text-align: center;
+}
+.card-title {
+  text-shadow: black 0px 3px 4px;
 }
