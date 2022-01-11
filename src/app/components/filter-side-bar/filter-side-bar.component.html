@@ -12,9 +12,9 @@
                 <input
                     class="form-check-input"
                     type="checkbox"
-                    value="testcategory"
+                    value="{{category}}"
                     id="checkBoxCategory{{indexCat}}"
-                    #categorie (click)="catFilter (category)"/>
+                    #categorie (click)="catFilter ($event)"/>
 
                 <label class="form-check-label" for="checkBoxCategory{{indexCat}}">
                     {{ category }}

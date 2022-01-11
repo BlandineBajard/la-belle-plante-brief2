@@ -100,14 +100,19 @@ export class PageAccueilComponent implements OnInit {
     this.listData = product;
   }
 
-categorieFilter(valeur:any){
-  console.log(valeur);
-let cate = this.listFull.filter((categories) =>
-categories.product_breadcrumb_label.includes(valeur));
-this.listData=cate;
 
-
+categorieFilter(valeur:any){ //recupère le tableau de categories créée quand on clique
+console.log(valeur);
+this.listData=[]; //initialise le tableau qui va stocker à null
+if (valeur.length==0){ //si le tableau récupéré est à null alors
+  this.listData=this.listFull; //le tableau qui va stocker est le tableau d'objets en entier
 }
-
+else { //sinon alors on fait une boucle qui va passer sur chaque valeur du tableau categories cliquées
+for (let i=0; i<= valeur.length;i++){
+  let cate = this.listFull.filter((categories) => //cela va permettre de filtrer le tableau d'objet
+categories.product_breadcrumb_label.includes(valeur[i])); //en fonction des catégories cliquées
+this.listData=this.listData.concat(cate);                //on concatene chaque tableau ainsi créé
+}                                                       //et on le stocke dans le tableau qui était à null
 }
-
+}
+}
