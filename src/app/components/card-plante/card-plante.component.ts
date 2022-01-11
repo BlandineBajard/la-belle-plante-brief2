@@ -9,14 +9,13 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class CardPlanteComponent implements OnInit {
   @Input() plant: any;
   @Output() clickLike = new EventEmitter();
-  constructor() { }
 
   ngOnInit(): void {
   }
-
   onClickLike() {
     console.log('click');
     this.clickLike.emit();
   }
+
 
 }
