@@ -12,6 +12,7 @@ export class PageAccueilComponent implements OnInit {
   public listData: any[];
   public listFull: any[];
   public listCategoriesFilter: string[];
+  public listPriceFilter: string[];
   public category: any[];
 
 
@@ -21,7 +22,12 @@ export class PageAccueilComponent implements OnInit {
     this.listData = [];
     this.listFull = [];
     this.listCategoriesFilter = [];
+    this.listPriceFilter = [];
+    this.listFull =[];
     this.category=[];
+    this.prixAsc = true;
+    this.alphaAsc = true;
+    this.avisAsc = true;
 
 
 
@@ -49,6 +55,9 @@ export class PageAccueilComponent implements OnInit {
          * Technique avec Underscore JS pour recupérer les catégories uniques de nos plantes
          */
         const listAllCategories = listPlant.map(product => product.product_breadcrumb_label);
+        console.log(listAllCategories);
+
+        const listPriceFilter = listPlant.map(product => product.product_price);
         console.log(listAllCategories);
 
         const listUniqCategories = _.uniq(listAllCategories)
@@ -100,6 +109,67 @@ export class PageAccueilComponent implements OnInit {
     this.listData = product;
   }
 
+    // methode de tri
+  onClickPrix(){
+    this.alphaAsc = true;
+    this.avisAsc = true;
+    this.prixAsc = !this.prixAsc;
+    //console.log('order prix asc:'+this.prixAsc);
+    this.sortBy('product_unitprice_ati', this.prixAsc)
+  }
+
+  onClickAlpha(){
+    this.avisAsc = true;
+    this.prixAsc = true;
+    this.alphaAsc = !this.alphaAsc;
+    //console.log('order nom asc:'+this.alphaAsc);
+    this.sortBy('product_name', this.alphaAsc)
+  }
+
+  onClickAvis(){
+    this.alphaAsc = true;
+    this.prixAsc = true;
+    this.avisAsc = !this.avisAsc;
+    //console.log('order avis asc:'+this.avisAsc);
+    this.sortBy('product_rating', this.avisAsc)
+  }
+
+  sortBy(sortName:any, sortType:any){
+    if(sortType == true){
+
+        this.listData = _.sortBy(this.listData, sortName);
+
+    }else{
+      if(sortName == 'product_unitprice_ati'){
+        this.listData = this.listData.sort((x, y) => parseFloat(x.product_unitprice_ati) - parseFloat(y.product_unitprice_ati)).reverse();
+      }else{
+        this.listData = _.sortBy(this.listData, sortName).reverse();
+      }
+
+    }
+  }
+
+  //filtre pour les prix dans la filter-side-bar
+  resultePriceSelect(tableuresultselectPrice: any){
+    //condition si prix min null
+    if(tableuresultselectPrice[0]==''){
+      tableuresultselectPrice[0]=0;
+    }
+    //condition si prix max null
+    if(tableuresultselectPrice[1] ==''){
+      let product = this.listFull.filter((plants) =>
+      parseFloat(plants.product_unitprice_ati) > tableuresultselectPrice[0]);
+      console.log(product);
+      this.listData = product;
+    }
+    //condition si prix min et prix max sont renseignés
+    else{
+      let product = this.listFull.filter((plants) =>
+      parseFloat(plants.product_unitprice_ati) > tableuresultselectPrice[0] && parseFloat(plants.product_unitprice_ati) < tableuresultselectPrice[1]);
+      console.log(product);
+      this.listData = product;
+    }
+    }
 
 categorieFilter(valeur:any){ //recupère le tableau de categories créée quand on clique
 console.log(valeur);

@@ -1,5 +1,5 @@
 <div class="d-flex align-items-stretch">
-    <app-filter-side-bar [listCategories]="listCategoriesFilter" (clickRateAvis)="recupRateAvis($event)" (onSelectedCategory)="categorieFilter($event)"></app-filter-side-bar>
+    <app-filter-side-bar [listCategories]="listCategoriesFilter" (rangePrice)="resultePriceSelect($event)" (clickRateAvis)="recupRateAvis($event)" (onSelectedCategory)="categorieFilter($event)"></app-filter-side-bar>
 
     <div class="custom-main container p-3">
         <input class="form-control"
