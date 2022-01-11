@@ -11,13 +11,18 @@ import * as _ from 'underscore';
 export class PageAccueilComponent implements OnInit {
   public listData: any[];
   public listFull: any[];
+  public prixAsc: any;
+  public alphaAsc: any;
+  public avisAsc: any;
   public listCategoriesFilter: string[];
 
   constructor(private plantouneService: PlantouneService) {
     this.listData = [];
     this.listFull = [];
     this.listCategoriesFilter = [];
-    this.listFull =[];
+    this.prixAsc = true;
+    this.alphaAsc = true;
+    this.avisAsc = true;
   }
 
    /**
@@ -91,5 +96,46 @@ export class PageAccueilComponent implements OnInit {
     plants.product_name.toLowerCase().includes(filter.toLowerCase())
     );
     this.listData = product;
+  }
+
+
+  // methode de tri
+  onClickPrix(){
+    this.alphaAsc = true;
+    this.avisAsc = true;
+    this.prixAsc = !this.prixAsc;
+    //console.log('order prix asc:'+this.prixAsc);
+    this.sortBy('product_unitprice_ati', this.prixAsc)
+  }
+
+  onClickAlpha(){
+    this.avisAsc = true;
+    this.prixAsc = true;
+    this.alphaAsc = !this.alphaAsc;
+    //console.log('order nom asc:'+this.alphaAsc);
+    this.sortBy('product_name', this.alphaAsc)
+  }
+
+  onClickAvis(){
+    this.alphaAsc = true;
+    this.prixAsc = true;
+    this.avisAsc = !this.avisAsc;
+    //console.log('order avis asc:'+this.avisAsc);
+    this.sortBy('product_rating', this.avisAsc)
+  }
+
+  sortBy(sortName:any, sortType:any){
+    if(sortType == true){
+
+        this.listData = _.sortBy(this.listData, sortName);
+
+    }else{
+      if(sortName == 'product_unitprice_ati'){
+        this.listData = this.listData.sort((x, y) => parseFloat(x.product_unitprice_ati) - parseFloat(y.product_unitprice_ati)).reverse();
+      }else{
+        this.listData = _.sortBy(this.listData, sortName).reverse();
+      }
+      
+    }
   }
 }
