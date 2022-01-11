@@ -25,6 +25,13 @@
             </div>
         </div>
     </ul>
+    <div>
+      <p class="mb-1 fs-5 fw-semibold">Prix</p>
+      <input class="form-control" type="number" placeholder="Prix Min" aria-label="Input Min" #numberMin>
+      <input class="form-control" type="number" placeholder="Prix Max" aria-label="Input Max" #numberMax>
+      <button class="btn btn-success" (click)="OnClickValiderPrix(numberMin.value,numberMax.value)">Valider</button>
+    </div>
+
     <div class="p-3 border-top">
         <p class="mb-1 fs-5 fw-semibold">Avis</p>
         <app-avis-bar (filterByAvis)="filterAvis($event)"></app-avis-bar>
