@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { PlantouneService } from 'src/app/services/plantoune.service';
 import * as _ from 'underscore';
+
 
 @Component({
   selector: 'app-page-accueil',
@@ -16,7 +17,8 @@ export class PageAccueilComponent implements OnInit {
     this.listData = [];
     this.listFull = [];
     this.listCategoriesFilter = [];
-   }
+    this.listFull =[];
+  }
 
    /**
     * equivalent de la ligne du dessus 
@@ -75,4 +77,19 @@ export class PageAccueilComponent implements OnInit {
     //console.log(product);
   }
 
+  onSearchChange(product_name: any): void {
+    if(product_name == '' ){
+      this.listData = this.listFull;
+    }
+    else{
+      this.applyFilter(product_name);
+    }
+  }
+
+  applyFilter(filter :any ) {
+    let product = this.listFull.filter((plants) =>
+    plants.product_name.toLowerCase().includes(filter.toLowerCase())
+    );
+    this.listData = product;
+  }
 }
