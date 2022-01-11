@@ -11,7 +11,7 @@ export class PlantouneService {
   constructor(private httpClient: HttpClient) { }
 
   getData(): Observable<any[]> {
-    return this.httpClient.get<any[]>('http://192.168.1.16:3000/list_products');
+    return this.httpClient.get<any[]>('http://localhost:3000/list_products');
   }
 
   getDataId(product_id:any): Observable<any[]>{
