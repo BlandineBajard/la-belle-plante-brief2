@@ -14,6 +14,9 @@ export class PageAccueilComponent implements OnInit {
   public listCategoriesFilter: string[];
   public listPriceFilter: string[];
   public category: any[];
+  public prixAsc: any;
+  public alphaAsc: any;
+  public avisAsc: any;
 
 
 
@@ -25,10 +28,6 @@ export class PageAccueilComponent implements OnInit {
     this.listPriceFilter = [];
     this.listFull =[];
     this.category=[];
-    this.prixAsc = true;
-    this.alphaAsc = true;
-    this.avisAsc = true;
-
 
 
   }

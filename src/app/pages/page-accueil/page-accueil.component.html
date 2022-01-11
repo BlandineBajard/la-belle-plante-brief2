@@ -11,10 +11,19 @@
         >
 
         <div class="py-3">
-            Trier par :
-            <button class="btn btn-outline-success btn-sm me-2">Prix</button>
-            <button class="btn btn-outline-success btn-sm me-2">Ordre Alpha</button>
-            <button class="btn btn-outline-success btn-sm me-2">Avis</button>
+          Trier par :
+          <button class="btn btn-outline-success btn-sm me-2" (click)="onClickPrix()">
+            <app-icon [iconName]="prixAsc ? 'bi bi-sort-down-alt' : 'bi bi-sort-up-alt'" [iconSize]="1">
+            </app-icon>Prix
+          </button>
+          <button class="btn btn-outline-success btn-sm me-2" (click)="onClickAlpha()">
+            <app-icon [iconName]="alphaAsc ? 'bi bi-sort-down-alt' : 'bi bi-sort-up-alt'" [iconSize]="1">
+            </app-icon>Ordre Alpha
+          </button>
+          <button class="btn btn-outline-success btn-sm me-2" (click)="onClickAvis()">
+            <app-icon [iconName]="avisAsc ? 'bi bi-sort-down-alt' : 'bi bi-sort-up-alt'" [iconSize]="1">
+            </app-icon>Avis
+          </button>
         </div>
 
         <div class="row">
