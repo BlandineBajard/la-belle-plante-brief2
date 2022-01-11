@@ -22,11 +22,13 @@
             <div *ngIf="listCategories.length == 0 ">
                 Aucune catégorie disponible
             </div>
-            <p class="mb-1 fs-5 fw-semibold">Avis</p>
-            <app-avis-bar></app-avis-bar>
-            <div>
-                <a href="#" class="btn btn-success">Valider</a>
-            </div>
         </div>
     </ul>
+    <div class="p-3 border-top">
+        <p class="mb-1 fs-5 fw-semibold">Avis</p>
+        <app-avis-bar (filterByAvis)="filterAvis($event)"></app-avis-bar>
+        <div>
+          <button class="btn btn-success" (click)="OnClickValider()">Valider</button>
+        </div>
+    </div>
 </div>

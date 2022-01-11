@@ -15,6 +15,7 @@ export class PageAccueilComponent implements OnInit {
 
   constructor(private plantouneService: PlantouneService) {
     this.listData = [];
+    this.listFull = [];
     this.listCategoriesFilter = [];
     this.listFull =[];
   }
@@ -64,6 +65,16 @@ export class PageAccueilComponent implements OnInit {
 
   onEventLike() {
     this.plantouneService.plantLiked$.next('')
+  }
+  
+  recupRateAvis(rateAvis:any){
+    //console.log('from accueil: '+rateAvis);
+    let product = this.listFull.filter(function (currentElement) {
+      // the current value is an object, so you can check on its properties
+      return currentElement.product_rating >= rateAvis;
+    });
+    this.listData = product;
+    //console.log(product);
   }
 
   onSearchChange(product_name: any): void {
