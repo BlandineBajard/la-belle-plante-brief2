@@ -12,19 +12,26 @@ export class PageAccueilComponent implements OnInit {
   public listData: any[];
   public listFull: any[];
   public listCategoriesFilter: string[];
+  public category: any[];
+
+
+
 
   constructor(private plantouneService: PlantouneService) {
     this.listData = [];
     this.listFull = [];
     this.listCategoriesFilter = [];
-    this.listFull =[];
+    this.category=[];
+
+
+
   }
 
    /**
-    * equivalent de la ligne du dessus 
-    * 
+    * equivalent de la ligne du dessus
+    *
     * plantouneService;
-    * 
+    *
     * constructor(plantouneService: PlantouneService) {
     *   this.plantouneService = plantouneService;
     * }
@@ -43,10 +50,10 @@ export class PageAccueilComponent implements OnInit {
          */
         const listAllCategories = listPlant.map(product => product.product_breadcrumb_label);
         console.log(listAllCategories);
-        
-        const listUniqCategories = _.uniq(listAllCategories) 
+
+        const listUniqCategories = _.uniq(listAllCategories)
         console.log(listUniqCategories);
-        
+
 
         /**
          * Technique native JS pour recupérer les catégories uniques de nos plantes
@@ -58,7 +65,7 @@ export class PageAccueilComponent implements OnInit {
         this.listCategoriesFilter = listUniqJsCategories;
         this.listData = listPlant;
         this.listFull = listPlant;
-        this.listData.length = 9;
+        //this.listData.length = 9;
       }
     )
   }
@@ -66,7 +73,7 @@ export class PageAccueilComponent implements OnInit {
   onEventLike() {
     this.plantouneService.plantLiked$.next('')
   }
-  
+
   recupRateAvis(rateAvis:any){
     //console.log('from accueil: '+rateAvis);
     let product = this.listFull.filter(function (currentElement) {
@@ -92,4 +99,15 @@ export class PageAccueilComponent implements OnInit {
     );
     this.listData = product;
   }
+
+categorieFilter(valeur:any){
+  console.log(valeur);
+let cate = this.listFull.filter((categories) =>
+categories.product_breadcrumb_label.includes(valeur));
+this.listData=cate;
+
+
 }
+
+}
+
