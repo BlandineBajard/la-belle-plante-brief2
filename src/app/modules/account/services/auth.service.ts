@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/user';
 
@@ -36,7 +36,9 @@ export class AuthService {
 
     console.log('Mon body : ', body);
 
-    return this.http.post(`${this.apiUrl}/login`, body);
+    return this.http
+      .post(`${this.apiUrl}/login`, body)
+      .pipe(map((x: any) => console.log('Service : ', x.accessToken)));
   }
 
   forgotPassword(email: string, password: string): Observable<any> {
