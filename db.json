@@ -6059,6 +6059,13 @@
       "email": "blandine.bajard@gmail.com",
       "password": "$2a$10$66Nq58EbByOrBOAyjENYJ.kd0GfDvaEGzXX7Yf09Tv9Ev2P8.GFLG",
       "id": 2
+    },
+    {
+      "email": "toto@gmail.com",
+      "password": "$2a$10$M4UxXai4CjvwGGlMfQ708uzWQzNYHP5kFgzw6MddSz0Srmm6kzvAW",
+      "firstName": "Blandine",
+      "lastName": "Bajard",
+      "id": 3
     }
   ]
 }

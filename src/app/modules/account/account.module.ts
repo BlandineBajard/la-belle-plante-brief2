@@ -8,6 +8,7 @@ import { PageForgotPasswordComponent } from './pages/page-forgot-password/page-f
 import { PageSignupComponent } from './pages/page-signup/page-signup.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PageAccountComponent } from './pages/page-account/page-account.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     PageSignInComponent,
     PageResetPasswordComponent,
     PageForgotPasswordComponent,
-    PageSignupComponent
+    PageSignupComponent,
+    PageAccountComponent
   ],
   imports: [
     CommonModule,

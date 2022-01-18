@@ -15,6 +15,7 @@ export class AuthService {
   constructor(private http: HttpClient) {
     // On se sert des variables d'environnement de notre application
     this.apiUrl = environment.apiUrl;
+    this.tokenKey = environment.tokenKey;
   }
 
   signup(newUser: User): Observable<any> {
