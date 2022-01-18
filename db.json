@@ -6068,6 +6068,13 @@
       "email": "tata@mail.com",
       "password": "$2a$10$Obabac43MgjIO5QSCGSoj.xa/r.l726x6yrp84XCIPm64Gq3CYLty",
       "id": 7
+    },
+    {
+      "email": "coco2000@mail.com",
+      "password": "$2a$10$9IYZ06fpV6mFcRlRT4VVl.ZMQHXl9f.n8QvlhALAo80iZg3fG3Rsy",
+      "firstName": "coco",
+      "lastName": "2000",
+      "id": 8
     }
   ]
 }
