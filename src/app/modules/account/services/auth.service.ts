@@ -20,6 +20,30 @@ export class AuthService {
       password: password,
     };
 
+    console.log('Mon body : ', body);
+
     return this.http.post(`${this.apiUrl}/register`, body);
+  }
+
+  signin(email: string, password: string): Observable<any> {
+    const body = {
+      email: email,
+      password: password,
+    };
+
+    console.log('Mon body : ', body);
+
+    return this.http.post(`${this.apiUrl}/login`, body);
+  }
+
+  forgotPassword(email: string, password: string): Observable<any> {
+    const body = {
+      email: email,
+      password: password,
+    };
+
+    console.log('Mon body : ', body);
+
+    return this.http.post(`${this.apiUrl}/forgot-psw`, body);
   }
 }

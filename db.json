@@ -6053,6 +6053,21 @@
       "email": "aline.rinquin.ar@gmail.com",
       "password": "$2a$10$xZJyEqxk5GbNOQjBn50fNuxgoI9zppWQwLiwmpPEdhGzyzDE3gSqe",
       "id": 4
+    },
+    {
+      "email": "coco@mail.com",
+      "password": "$2a$10$wRdd3l7PYptQQ8yBOlmZYucoQj2Aw0Agelh4dVFi2oeIVSkXvIEda",
+      "id": 5
+    },
+    {
+      "email": "coco2@mail.com",
+      "password": "$2a$10$JhM6AuyduOcr7nJ/PxJsBe5Y/pXELYPCuJiUt9vWGqAz4kqHvwSwi",
+      "id": 6
+    },
+    {
+      "email": "tata@mail.com",
+      "password": "$2a$10$Obabac43MgjIO5QSCGSoj.xa/r.l726x6yrp84XCIPm64Gq3CYLty",
+      "id": 7
     }
   ]
 }
