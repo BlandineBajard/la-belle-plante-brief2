@@ -8,6 +8,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: PageAccueilComponent },
   { path: 'details/:id', component: PageDetailsComponent },
+  { path: 'account', loadChildren: ()=> import('./modules/account/account.module')
+  .then(m =>m.AccountModule)},
   { path: '**', component: PageNotFoundComponent }
 ];
 
