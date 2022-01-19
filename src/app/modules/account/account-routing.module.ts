@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './pages/auth.guard';
+import { PageAccountComponent } from './pages/page-account/page-account.component';
 import { PageForgotPasswordComponent } from './pages/page-forgot-password/page-forgot-password.component';
 import { PageResetPasswordComponent } from './pages/page-reset-password/page-reset-password.component';
 import { PageSigninComponent } from './pages/page-signin/page-signin.component';
@@ -11,6 +13,7 @@ const routes: Routes = [
   { path: 'signup', component: PageSignupComponent }, // account/signup
   { path: 'forgot-password', component: PageForgotPasswordComponent },
   { path: 'reset-password', component: PageResetPasswordComponent },
+  { path: 'user', canActivate: [AuthGuard], component: PageAccountComponent },
 ];
 
 @NgModule({

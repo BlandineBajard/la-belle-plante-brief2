@@ -9,10 +9,12 @@ import { User } from '../models/user';
 })
 export class AuthService {
   private apiUrl: string;
+  private tokenKey: string;
 
   constructor(private http: HttpClient) {
     // On se sert des variables d'environnement de notre application
     this.apiUrl = environment.apiUrl;
+    this.tokenKey = environment.tokenKey;
   }
 
   signup(newUser: User): Observable<any> {
@@ -36,9 +38,18 @@ export class AuthService {
 
     console.log('Mon body : ', body);
 
-    return this.http
-      .post(`${this.apiUrl}/login`, body)
-      .pipe(map((x: any) => console.log('Service : ', x.accessToken)));
+    // Modifier cette partie ci-dessous :
+    // - pour pouvoir stocker dans le localstorage notre accesstoken
+    // - Sous la clé "TOKEN-LBP"
+
+    return this.http.post(`${this.apiUrl}/login`, body).pipe(
+      map((x: any) => {
+        console.log('Service : ', x.accessToken);
+        // Modification à faire ici
+        localStorage.setItem(this.tokenKey, x.accessToken);
+        return x; // permet de renvoyer la réponse à l'initiateur (page Signin) après le traitement du map
+      })
+    );
   }
 
   forgotPassword(email: string, password: string): Observable<any> {
