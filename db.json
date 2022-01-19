@@ -6049,9 +6049,11 @@
       "product_web_only": "oui"
     }
   ],
-  "users": [
+  "users": ["Saintpaulia : plante Ø12cm petit modèle pot"
     {
       "email": "sana@gmail.com",
+      "firstName" : "Sana",
+      "lastName" : "LaBest",
       "password": "$2a$10$Hqa4EXhIoOl5eVCzEcGBfOZY2vlFtrw3p7nE/sQ5O7jwqHpZyV1s2",
       "id": 1
     },
@@ -6066,6 +6068,29 @@
       "firstName": "Blandine",
       "lastName": "Bajard",
       "id": 3
+    }
+  ],
+  "favPlant" : [
+    {
+      "id" : 0,
+      "userId" :1,
+      "plantId" : "952438"
+    },
+      {
+      "id" : 2,
+      "userId" :1,
+      "plantId" : "77390"
+    },
+      {
+      "id" : 3,
+      "userId" :1,
+      "plantId" : "952438"
+
+    },
+      {
+      "id" : 4,
+      "userId" :3,
+      "plantId" : "77390"
     }
   ]
 }

@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { PlantouneService } from 'src/app/services/plantoune.service';
 import * as _ from 'underscore';
+import jwt_token from 'jwt-decode';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -51,6 +53,16 @@ export class PageAccueilComponent implements OnInit {
 
 
   ngOnInit(): void {
+  const token = localStorage.getItem(environment.tokenKey);
+    if(token) {
+      const decodedToken = jwt_token<any>(token);
+      const userId = decodedToken.sub;
+      this.plantouneService.getPlantFav(userId)
+
+      //faire un call API pour récupérer nos plantes
+      // toutes les plantes mises en favorites par le user connecté => leur ajouter une propriété "plante likée"
+    } else {
+
 
     this.plantouneService.getData().subscribe(
       (listPlant: any[]) => {
@@ -83,6 +95,7 @@ export class PageAccueilComponent implements OnInit {
       }
     )
   }
+}
 
   onEventLike() {
     this.plantouneService.plantLiked$.next('')
@@ -232,7 +245,7 @@ categorieFilter(valeur:any){ //recupère le tableau de categories créée quand 
           categories.product_breadcrumb_label.includes(mesCategories[i])); //en fonction des catégories cliquées
           this.listTempo=this.listTempo.concat(cate);                //on concatene chaque tableau ainsi créé
         }
-        this.listData = this.listTempo; 
+        this.listData = this.listTempo;
       }
     }
 
@@ -257,7 +270,7 @@ categorieFilter(valeur:any){ //recupère le tableau de categories créée quand 
       }
       this.listData = this.listTempo;
     }
-    
+
     // filter par avis
     if(rateAvis){
       console.log('rate:'+rateAvis);
