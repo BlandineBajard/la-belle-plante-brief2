@@ -6076,5 +6076,17 @@
       "lastName": "2000",
       "id": 8
     }
+  ],
+  "favPlant" : [
+    {
+        "id": 1,
+        "userId": 8,
+        "plantId": "952438"
+    },
+    {
+        "id": 2,
+        "userId": 8,
+        "plantId": "77390"
+    }
   ]
 }
