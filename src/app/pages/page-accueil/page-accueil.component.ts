@@ -45,7 +45,16 @@ export class PageAccueilComponent implements OnInit {
    */
 
   ngOnInit(): void {
-    const token = localStorage.getItem(environment.tokenKey);
+  const token = localStorage.getItem(environment.tokenKey);
+    if(token) {
+      const decodedToken = jwt_token<any>(token);
+      const userId = decodedToken.sub;
+      this.plantouneService.getPlantFav(userId)
+
+      //faire un call API pour récupérer nos plantes
+      // toutes les plantes mises en favorites par le user connecté => leur ajouter une propriété "plante likée"
+    } else {
+
 
     if (token) {
       const decodedToken = jwt_token<any>(token);
@@ -90,12 +99,13 @@ export class PageAccueilComponent implements OnInit {
       });
     }
   }
+}
 
   onEventLike() {
     this.plantouneService.plantLiked$.next('');
   }
 
-  recupRateAvis(rateAvis: any) {
+  recupRateAvis(rateAvis:any){
     this.rating = rateAvis;
     //console.log('from accueil: '+rateAvis);
     // let product = this.listFull.filter(function (currentElement) {
@@ -178,7 +188,7 @@ export class PageAccueilComponent implements OnInit {
   }
 
   //filtre pour les prix dans la filter-side-bar
-  resultePriceSelect(tableuresultselectPrice: any) {
+  resultePriceSelect(tableuresultselectPrice: any){
     this.prixSelected = tableuresultselectPrice;
     // //condition si prix min null
     // if(tableuresultselectPrice[0]==''){

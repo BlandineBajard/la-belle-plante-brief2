@@ -6079,14 +6079,25 @@
   ],
   "favPlant" : [
     {
-        "id": 1,
-        "userId": 8,
-        "plantId": "952438"
+      "id" : 0,
+      "userId" :1,
+      "plantId" : "952438"
     },
-    {
-        "id": 2,
-        "userId": 8,
-        "plantId": "77390"
+      {
+      "id" : 2,
+      "userId" :1,
+      "plantId" : "77390"
+    },
+      {
+      "id" : 3,
+      "userId" :1,
+      "plantId" : "952438"
+
+    },
+      {
+      "id" : 4,
+      "userId" :3,
+      "plantId" : "77390"
     }
   ]
 }

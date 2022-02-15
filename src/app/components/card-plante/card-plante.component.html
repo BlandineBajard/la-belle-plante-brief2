@@ -1,6 +1,6 @@
 <div class="plant card mb-4" style="width: 14rem;">
     <app-icon class="like"
-            [iconName]="'heart'"
+            [iconName]="plant.plantLike ? 'heart-fill' : 'heart'"
             [iconColor]="'#e35d6a'"
             (click)="onClickLike()"></app-icon>
 <img routerLink="../details/{{plant.product_id}}" src="{{plant.product_url_picture}}" class="card-img-top" alt="Image de {{ plant.product_name }}">

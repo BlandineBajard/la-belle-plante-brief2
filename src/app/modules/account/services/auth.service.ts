@@ -21,6 +21,7 @@ export class AuthService {
 
   signup(newUser: User): Observable<any> {
     //  const body = {
+<<<<<<< HEAD
     //     firstName: firstName,
     //     lastName: lastName,
     //     email: email,
@@ -75,4 +76,44 @@ export class AuthService {
       this.router.navigate(['account/signin']);
     }
   }
+=======
+    //    firstName: firstName,
+    //   lastName: lastName,
+    //    email: email,
+    //    password: password
+    //  };
+
+    return this.http.post(`${this.apiUrl}/register`, newUser);
+  }
+
+  signin(email:string, password:string): Observable<any>{
+  const body = {
+    email: email,
+    password: password
+    };
+
+    // - pour pouvoir stocker dans le local-storage notre access token
+    // sous la clé "TOKEN-LBP"
+
+    return this.http.post(`${this.apiUrl}/login`, body).pipe(
+      map((x:any) => {
+      console.log('Service :', x.accessToken);
+      localStorage.setItem(this.tokenKey, x.accessToken);  // pour pouvoir stocker dans le local-storage notre access token
+    return x;                                             // sous la clé "TOKEN-LBP" (cf environnements.ts)
+    })
+    );
+  }
+  getConnectedUserInfo(): Observable<User> | void {
+    const token = localStorage.getItem(this.tokenKey);
+    if(token) {
+      const decodedToken = jwt_decode<any>(token);
+      const userId = decodedToken.sub;
+      return this.http.get<User>(`${this.apiUrl}/users/${userId}`)
+    }else {
+      this.router.navigate(['account/signin']);
+    }
+  }
+
+
+>>>>>>> main
 }

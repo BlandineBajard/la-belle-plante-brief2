@@ -21,8 +21,6 @@ export class PlantouneService {
   }
 
   getPlantFav(userId: number): Observable<any[]> {
-    return this.httpClient.get<any[]>(
-      'http://localhost:3000/favplants' + userId
-    );
+    return this.httpClient.get<any[]>('http://localhost:3000/favPlant?userId='+userId)
   }
 }
